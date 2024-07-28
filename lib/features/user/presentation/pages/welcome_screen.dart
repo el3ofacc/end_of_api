@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:random_user/features/user/presentation/pages/facebookpage.dart';
 import 'package:random_user/features/user/presentation/pages/homepage.dart';
+import 'package:random_user/features/user/presentation/pages/myfacebookweb.dart';
 
 class Welcome_Screen extends StatefulWidget {
   const Welcome_Screen({super.key});
@@ -17,14 +19,15 @@ class _Welcome_ScreenState extends State<Welcome_Screen>
   void initState() {
     super.initState();
     animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 4));
+        AnimationController(vsync: this, duration: Duration(seconds: 2));
 
     
     animationController.forward();
 imageanimation=Tween<double>(begin: 0,end: 150).animate(animationController);
-    Future.delayed(Duration(seconds: 5), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Homepage()));
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.pushReplacement( 
+          context, MaterialPageRoute(builder: (context) =>Homepage()
+          ));
     });
   }
 

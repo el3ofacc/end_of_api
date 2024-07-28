@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Mydialog {
-  showmessage(BuildContext context, String message ,Function() myfun) {
+  showmessage({ required BuildContext context,
+  required String message ,
+required  Function() myfun,
+required
+String message_option}) {
     showDialog(
         context: context,
         builder: (context) {
@@ -17,7 +21,7 @@ class Mydialog {
                     myfun();
                   },
                   child: Text(
-                    "ok",
+                    message_option,
                     style: Theme.of(context).textTheme.headlineLarge,
                   ))
             ],

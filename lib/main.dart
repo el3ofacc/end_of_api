@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:random_user/core/utils/mytheme.dart';
 
 import 'package:random_user/features/user/presentation/pages/welcome_screen.dart';
+import 'package:random_user/features/user/presentation/provider/catagoryprovider.dart';
+import 'package:random_user/features/user/presentation/provider/changelike.dart';
 import 'package:random_user/features/user/presentation/provider/mylocaldata.dart';
 
 import 'package:random_user/features/user/presentation/provider/myswich.dart';
@@ -19,11 +21,12 @@ Future<Box> openbox(String boxname) async {
 }
 
 void main() async {
+  
+
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  
   msg = await openbox('msg');
-  runApp(Myapp());
+  runApp(const Myapp());
 }
 
 class Myapp extends StatelessWidget {
@@ -31,14 +34,18 @@ class Myapp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      final GlobalKey<NavigatorState> navigatorkey = GlobalKey<NavigatorState>();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => Myswich_provider()),
-        ChangeNotifierProvider(create: (context) => Mylocal_data())
+        ChangeNotifierProvider(create: (context)=>Changelike()),
+        ChangeNotifierProvider(create: (context) => Mylocal_data()),
+        ChangeNotifierProvider(create: (context)=>Catagoryprovider())
       ],
       child: Consumer<Myswich_provider>(
         builder: (context, provider, child) {
           return MaterialApp(
+            key:navigatorkey,
             theme: provider.oldvalue
                 ? Mythemedark().apptheme_dark
                 : Mythemewhite().appthemewhite,

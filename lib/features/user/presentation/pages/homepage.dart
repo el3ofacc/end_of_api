@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:random_user/features/user/presentation/widgets/horizontal.dart';
+ 
 import 'package:random_user/features/user/presentation/widgets/mydrawer.dart';
 import 'package:random_user/features/user/presentation/widgets/vertical.dart';
+ 
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -9,15 +12,18 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+      appBar: AppBar(),
+     
         drawer: mydrawer(),
-        body: CustomScrollView(
+       
+      body:  CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
               child: Horizontal(),
             ),
             Vertical(),
           ],
-        ));
+        )
+        );
   }
 }

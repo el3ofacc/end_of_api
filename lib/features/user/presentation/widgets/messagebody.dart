@@ -32,10 +32,11 @@ class _Message_bodyState extends State<Message_body> {
                   padding: const EdgeInsets.all(10.0),
                   child: InkWell(
                     onLongPress: () {
-                      Mydialog().showmessage(context, "${provdier.mydata[index]} will be deleted",
-                          () {
+                      Mydialog().showmessage(context:context, 
+                      message:"${provdier.mydata[index]} will be deleted",
+                        myfun:  () {
                         provdier.deletadata(index);
-                      });
+                      },message_option: "ok");
                     },
                     child: Card(
                       color: Colors.blue,
